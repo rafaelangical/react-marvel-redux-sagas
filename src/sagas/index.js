@@ -1,5 +1,7 @@
 import { put, takeLatest, takeEvery,  all, call } from 'redux-saga/effects';
 
+//fetch  all characters
+
 function* fetchCharacters() {
 
   let hash = '72e5ed53d1398abb831c3ceec263f18b';
@@ -16,10 +18,12 @@ function* fetchCharacters() {
   }
   catch(e) {
     console.log(e)
-    yield put({ type: 'CHARACTERS_FAILED'});
+    yield put({ type: 'GET_CHARACTERS_FAILED'});
   }
 
 }
+
+//fetch character by id
 
 function* fetchCharacterById() {
   let hash = '72e5ed53d1398abb831c3ceec263f18b';

@@ -18,7 +18,7 @@ const reducer = (state = {}, action) => {
       return { ...state, loading: true }
     
       //ERROR ON GET CHARACTERS
-    case 'CHARACTERS_FAILED':
+    case 'GET_CHARACTERS_FAILED':
       console.log('FETCHING_CHARACTERS_FAILED REDUCER');
       return { ...state, loading: false }
 
@@ -29,6 +29,7 @@ const reducer = (state = {}, action) => {
     case 'GET_CHARACTER_BY_ID': 
       console.log('GET_CHARACTER_BY_ID REDUCER');
       return { ...state, loadind: true }
+
       //FETCHING CHARACTERS BY ID
     case 'FETCHING_CHARACTER_BY_ID': 
       console.log('FETCHING_CHARACTER_BY_ID REDUCER');
@@ -37,13 +38,12 @@ const reducer = (state = {}, action) => {
       //CHARACTERS RECEIVED
     case 'CHARACTER_BY_ID_RECEIVED': 
       console.log('CHARACTER_BY_ID REDUCER');
-      console.log(state);
-      return { ...state, loading: false }
+      return { ...state, character: action.character, loading: false }
       
       //CHARACTERS GET FAILED 
     case 'GET_CHARACTER_BY_ID_FAILED':
       console.log('GET_CHARACTER_BY_ID_FAILED REDUCER');
-      return { ...state }
+      return { ...state, loading: false }
 
       ///////////////////
       
