@@ -12,7 +12,7 @@ function* fetchCharacters() {
 
   try{
     yield put({ type: 'FETCHING_CHARACTERS'});
-    const resp = yield call(fetch, `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${api_key}&hash=${hash}&limit=10&offset=1000`);
+    const resp = yield call(fetch, `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${api_key}&hash=${hash}&limit=90&offset=0`);
     const data = yield resp.json();
     yield put({type: 'CHARACTERS_RECEIVED', characters: data.data.results });
   }
