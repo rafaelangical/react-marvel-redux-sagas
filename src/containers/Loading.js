@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import img from '../loading_spinner.gif'
+import img from '../assets/images/loading_spinner.gif'
 
 let Loading = ({ loading }) => (
   loading ?
