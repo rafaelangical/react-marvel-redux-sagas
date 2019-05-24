@@ -38,7 +38,7 @@ const reducer = (state = {}, action) => {
       //CHARACTERS RECEIVED
     case 'CHARACTER_BY_ID_RECEIVED': 
       console.log('CHARACTER_BY_ID REDUCER');
-      return { ...state, character: action.character, loading: false }
+      return { ...state, characterById: action.characterById, loading: false }
       
       //CHARACTERS GET FAILED 
     case 'GET_CHARACTER_BY_ID_FAILED':
@@ -47,6 +47,10 @@ const reducer = (state = {}, action) => {
 
       ///////////////////
       
+      //CLOSE MODAL
+    case 'CLOSE_MODAL':
+      console.log('CLOSE_MODAL REDUCER');
+      return{ ...state, characterById: undefined }
       //DEFAULT PAYLODAD
     default: 
       return state;

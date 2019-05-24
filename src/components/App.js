@@ -5,16 +5,20 @@ import CharactersComponent from '../containers/CharactersComponent';
 import Loading from '../containers/Loading';
 import { Container, Row, Col } from 'react-bootstrap';
 import '../App.css'
+import CharacterItem from '../containers/CharacterItem';
 
 const App = ({ characters }) => {
   return (
     <Container>
-      <Row style={{display: 'flex', flex: 1, backgroundColor: '#444', height: '70px', alignContent: 'center', justifyContent: 'center' }}>
-        <Button />
-        <ButtonB />
+      <Row>
+        <Col>
+          <Button />
+          <ButtonB />
+        </Col>
       </Row>
-      <Loading style={{width: '80%', height: '80%'}}/>
+      <Loading />
       <CharactersComponent />
+      <CharacterItem />
     </Container>
   );
 };

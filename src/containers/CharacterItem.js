@@ -1,0 +1,36 @@
+import React from 'react';
+import { connect } from 'react-redux'
+import Modal from 'react-bootstrap/Modal'
+import { Button } from 'react-bootstrap';
+import { closeModal } from '../actions';
+
+let CharacterItem = ({ characterById, closeModal }) => (
+  characterById ?
+  <Modal.Dialog style={{ width: '100vw', height: '100vh', justifySelf: 'center', alignSelf: 'center', marginTop: '40vh', padding: 0, position: 'absolute', top: 0, left: 0, right: 0, bottom:0 }} >
+    <Modal.Header closeButton={false}>
+      <Modal.Title>Modal title</Modal.Title>
+    </Modal.Header>
+
+    <Modal.Body>
+      <p>Modal body text goes here.</p>
+    </Modal.Body>
+
+    <Modal.Footer>
+      <Button variant="secondary" onClick={closeModal}>Close</Button>
+    </Modal.Footer>
+  </Modal.Dialog>
+  :
+  null
+);
+
+const mapStateToProps = (state) => ({ characterById: state.characterById })
+
+CharacterItem = connect(mapStateToProps,null)(CharacterItem)
+
+const mapDispatchToProps = {
+  closeModal: closeModal,
+};
+
+CharacterItem = connect(null,mapDispatchToProps)(CharacterItem);
+
+export default CharacterItem;
