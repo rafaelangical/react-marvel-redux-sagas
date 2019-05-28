@@ -1,10 +1,10 @@
 <h1>React Marvel Characters app</h1>
 
-## Dependencies
-- NodeJs
-- Npm or Yarn
+## You need:
+- NodeJs installed version >= 10
+- Npm or Yarn installed
 
-## How to play this project
+## How to play this project:
 - ```clone this project```
 - ```cd projectName```
 - ```yarn install or npm install```
