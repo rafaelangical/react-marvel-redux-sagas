@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../containers/Button';
+import PaginationContainer from '../containers/PaginationContainer';
 import CharactersComponent from '../containers/CharactersComponent';
 import Loading from '../containers/Loading';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -9,9 +9,13 @@ import CharacterItem from '../containers/CharacterItem';
 const App = ({ characters }) => {
   return (
     <Container>
-      <Button />
+      <Row style={{position: 'relative'}}>
+        <PaginationContainer />
+      </Row>
       <Loading />
-      <CharactersComponent />
+      <Row>
+        <CharactersComponent />
+      </Row>
       <CharacterItem />
     </Container>
   );

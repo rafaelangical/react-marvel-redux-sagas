@@ -2,18 +2,22 @@ import { put, takeLatest, takeEvery,  all, call } from 'redux-saga/effects';
 
 //fetch  all characters
 
-function* fetchCharacters() {
+function* fetchCharacters(payload) {
 
+  console.log(payload);
+
+  //let hash = 'e7f5ecb3535099c5d87d0e4e323bd767';
   let hash = '72e5ed53d1398abb831c3ceec263f18b';
-  
+
   let api_key = process.env.REACT_APP_API_KEY
   
   let ts = 'thesoer';
 
   try{
     yield put({ type: 'FETCHING_CHARACTERS'});
-    const resp = yield call(fetch, `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${api_key}&hash=${hash}&limit=90&offset=0`);
+    const resp = yield call(fetch, `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${api_key}&hash=${hash}&limit=${payload.limit}&offset=${payload.offset}`);
     const data = yield resp.json();
+    console.log(data)
     yield put({type: 'CHARACTERS_RECEIVED', characters: data.data.results });
   }
   catch(e) {
@@ -26,12 +30,8 @@ function* fetchCharacters() {
 //fetch character by id
 
 function* fetchCharacterById(id) {
-
-  let hash = '72e5ed53d1398abb831c3ceec263f18b';
   
   let api_key = process.env.REACT_APP_API_KEY
-  
-  let ts = 'thesoer';
 
   try{
     yield put({ type: 'FETCHING_CHARACTER_BY_ID'});

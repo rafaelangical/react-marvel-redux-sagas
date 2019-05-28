@@ -20,7 +20,7 @@ const reducer = (state = {}, action) => {
       //ERROR ON GET CHARACTERS
     case 'GET_CHARACTERS_FAILED':
       console.log('FETCHING_CHARACTERS_FAILED REDUCER');
-      return { ...state, loading: false }
+      return { ...state, loading: false, error: true }
 
     ///////////////
 
