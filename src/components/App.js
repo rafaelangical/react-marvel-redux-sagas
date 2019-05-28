@@ -5,20 +5,36 @@ import Loading from '../containers/Loading';
 import { Container, Row, Col } from 'react-bootstrap';
 import '../App.css'
 import CharacterItem from '../containers/CharacterItem';
+import { connect } from 'react-redux';
+import { fetchCharacters } from '../actions';
+class App extends React.Component {
 
-const App = ({ characters }) => {
-  return (
-    <Container>
-      <Row style={{position: 'relative'}}>
+  componentDidMount() {
+    const { fetchCharacters } = this.props;
+    fetchCharacters(0, 20);
+  }
+
+  render() {
+    return (
+      <Container>
+        <Row style={{padding: 20}}>
+          <h1 style={{margin: '0 auto', alignSelf: 'center'}}>Marvel Characters</h1>
+        </Row>
+        <Loading />
+        <Row>
+          <CharactersComponent />
+        </Row>
+        <CharacterItem />
         <PaginationContainer />
-      </Row>
-      <Loading />
-      <Row>
-        <CharactersComponent />
-      </Row>
-      <CharacterItem />
-    </Container>
-  );
+      </Container>
+    );
+  }
 };
+
+const mapDispatchToProps = {
+  fetchCharacters: fetchCharacters,
+};
+
+App = connect(null,mapDispatchToProps)(App);
 
 export default App;
