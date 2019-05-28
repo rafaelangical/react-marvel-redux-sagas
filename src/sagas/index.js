@@ -31,16 +31,15 @@ function* fetchCharacters(payload) {
 
 function* fetchCharacterById(id) {
   
-  let api_key = process.env.REACT_APP_API_KEY
+  let api_key = process.env.REACT_APP_API_KEY;
+  let hash = '72e5ed53d1398abb831c3ceec263f18b';
+  let ts = 'thesoer'
 
   try{
     yield put({ type: 'FETCHING_CHARACTER_BY_ID'});
-    console.log('id::::');
-    console.log(id);
-    console.log(id.id)
-    const resp = yield call(fetch, `https://gateway.marvel.com/v1/public/characters/1017101?apikey=${api_key}`);
+    const resp = yield call(fetch, `https://gateway.marvel.com/v1/public/characters/${id.id}?apikey=${api_key}&hash=${hash}&ts=${ts}`);
     const data = yield resp.json();
-    yield put({type: 'CHARACTER_BY_ID_RECEIVED', characterById: data });
+    yield put({type: 'CHARACTER_BY_ID_RECEIVED', characterById: data.data.results[0] });
   }
  catch(e){
    yield put({ type: 'GET_CHARACTER_BY_ID_FAILED'});

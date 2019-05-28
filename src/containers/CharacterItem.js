@@ -8,11 +8,11 @@ let CharacterItem = ({ characterById, closeModal }) => (
   characterById ?
   <Modal.Dialog aria-labelledby="contained-modal-title-vcenter" centered style={{ justifySelf: 'center', alignSelf: 'center', marginTop: '0 auto', padding: 0, position: 'absolute', top: 0, left: 0, right: 0, bottom:0 }} >
     <Modal.Header closeButton={false}>
-      <Modal.Title>Modal title</Modal.Title>
+      <Modal.Title>{characterById.name}</Modal.Title>
     </Modal.Header>
 
     <Modal.Body>
-      <p>Modal body text goes here.</p>
+      <p>{characterById.description !== '' ? characterById.description : 'No Description'}</p>
     </Modal.Body>
 
     <Modal.Footer>
