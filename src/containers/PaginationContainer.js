@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchCharacters } from '../actions';
-
+import { Row } from 'react-bootstrap';
 class PaginationContainer extends React.Component{
   constructor(props){
     super();
@@ -16,6 +16,7 @@ class PaginationContainer extends React.Component{
     const { offset, limit } = await this.state;
 
     await fetchCharacters(offset, limit);
+    window.scrollTo(0, 0);
   }
   getMoreData = async () => {
     if(this.state.offset === 900){
@@ -34,18 +35,9 @@ class PaginationContainer extends React.Component{
   }
 
   render() {
-
-    const { characters } = this.props;
     
     return (
-    <div>
-      { characters ? null :
-      <button onClick={() => this.getData()} 
-        style={{justifySelf:'center', alignSelf: 'center', 
-        color: 'darkblue', height: '50px', border:
-        '1px solid #a4a4a4', borderRadius: 6, margin: 10}}
-      >Get data</button>
-      }
+    <Row style={{justifyContent: 'center', alignItems: 'center'}}>
       {this.state.offset === 0 ? null : 
         <button onClick={() => this.getLessData()} 
           style={{justifySelf:'center', alignSelf: 'center', 
@@ -59,7 +51,7 @@ class PaginationContainer extends React.Component{
           '1px solid #a4a4a4', borderRadius: 6, margin: 10}}
         >Get More data</button>
       }
-    </div>
+    </Row>
     )}
 }
 
@@ -67,11 +59,6 @@ const mapDispatchToProps = {
   fetchCharacters: fetchCharacters,
 };
 
-const mapStateToProps = (state) => ({
-  characters: state.characters,
-});
-
-PaginationContainer = connect(mapStateToProps,null)(PaginationContainer);
 PaginationContainer = connect(null,mapDispatchToProps)(PaginationContainer);
 
 export default PaginationContainer;
